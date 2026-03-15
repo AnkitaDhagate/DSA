@@ -1,0 +1,27 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+
+        int n = nums.length;
+        boolean visited[] = new boolean[n];
+
+        for (int i = 0; i < n; i++) {
+
+            if (visited[i])
+                continue;
+
+            int count = 1;
+
+            for (int j = i + 1; j < n; j++) {
+                if (nums[i] == nums[j]) {
+                    count++;
+                    visited[j] = true;
+                }
+            }
+
+            if (count == 1)
+                return nums[i];   // return element, not index
+        }
+
+        return -1; // safety return
+    }
+}
